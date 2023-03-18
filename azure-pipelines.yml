@@ -6,9 +6,9 @@
 trigger:
 - main
 
-pool:
-  vmImage: ubuntu-latest
+pool: MacSelfHost
 
+steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
