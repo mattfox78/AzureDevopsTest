@@ -9,40 +9,14 @@ trigger:
 pool: Azure Pipelines
 
 variables:
-  buildConfiguration: 'Release'
-
+  imageName: 'pipelines-weatherforcastapi-docker'
+  DOCKER_BUILDKIT: 1
+    
 steps:
-- task: DotNetCoreCLI@2
-  displayName: Restore
+- task: Docker@2
+  displayName: Build an image
   inputs:
-    command: restore
-    projects: '**/*.csproj'
-
-- task: DotNetCoreCLI@2
-  displayName: Build
-  inputs:
+    repository: $(imageName)
     command: build
-    projects: '**/*.csproj'
+    Dockerfile: app/Dockerfile
 
-- task: DotNetCoreCLI@2
-  displayName: 'Run tests'
-  inputs:
-    command: 'test'
-    projects: '**/*.sln'
-    arguments: '--configuration $(buildConfiguration)'
-
-- task: DotNetCoreCLI@2
-  displayName: Publish
-  inputs:
-    command: publish
-    publishWebProjects: false
-    projects: '**/*.csproj'
-    arguments: '--configuration release --output $(build.artifactstagingdirectory) /property:PublishWithAspNetCoreTargetManifest=false'
-    zipAfterPublish: true
-
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact'
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'myTestProjectArtifact'
-    publishLocation: 'Container'
