@@ -6,7 +6,7 @@
 trigger:
 - main
 
-pool: MacSelfHost
+pool: Azure Pipelines
 
 variables:
   buildConfiguration: 'Release'
