@@ -12,7 +12,7 @@ variables:
   imageName: 'pipelines-weatherforcastapi-docker'
   DOCKER_BUILDKIT: 1
   buildConfiguration: 'Release'
-  OpenWeatherMapApiKey: $(OpenWeatherMapApiKey)
+  #OpenWeatherMapApiKey: $(OpenWeatherMapApiKey)
     
 steps:
 - task: DotNetCoreCLI@2
