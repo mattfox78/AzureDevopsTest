@@ -15,6 +15,7 @@ variables:
   buildConfiguration: 'Release'
   #OpenWeatherMapApiKey: $(OpenWeatherMapApiKey)
 
+
 steps:
 - task: DotNetCoreCLI@2
   displayName: Restore
@@ -22,11 +23,6 @@ steps:
     command: restore
     projects: '**/*.csproj'
 
-- task: ManualValidation@0
-  inputs:
-    notifyUsers: |
-      jordan.cavins@claytonhomes.com
-      <6b001018.claytonhomes.onmicrosoft.com@amer.teams.ms>
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
