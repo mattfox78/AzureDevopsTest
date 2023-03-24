@@ -3,6 +3,7 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+
 trigger:
 - main
 
@@ -13,14 +14,16 @@ variables:
   DOCKER_BUILDKIT: 1
   buildConfiguration: 'Release'
   #OpenWeatherMapApiKey: $(OpenWeatherMapApiKey)
-    
+
 steps:
 - task: DotNetCoreCLI@2
   displayName: Restore
   inputs:
     command: restore
     projects: '**/*.csproj'
-
+- task: ManualIntervention@8
+  inputs:
+    instructions: 'approval needed'
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
