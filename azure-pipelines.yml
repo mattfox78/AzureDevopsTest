@@ -21,9 +21,12 @@ steps:
   inputs:
     command: restore
     projects: '**/*.csproj'
-- task: ManualIntervention@8
+
+- task: ManualValidation@0
   inputs:
-    instructions: 'approval needed'
+    notifyUsers: |
+      jordan.cavins@claytonhomes.com
+      <6b001018.claytonhomes.onmicrosoft.com@amer.teams.ms>
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
