@@ -11,6 +11,7 @@ pool: Azure Pipelines
 variables:
   imageName: 'pipelines-weatherforcastapi-docker'
   DOCKER_BUILDKIT: 1
+  buildConfiguration: 'Release'
     
 steps:
 - task: DotNetCoreCLI@2
