@@ -14,9 +14,9 @@ variables:
     
 steps:
 - task: Docker@2
-  displayName: Build  image
+  displayName: Build and publish image
   inputs:
+    containerRegistry: 'azdevopstestweatherapi_serviceConnection'
     repository: $(imageName)
-    command: build
+    command: 'buildAndPush'
     Dockerfile: WeatherForecast.Api/Dockerfile
-
