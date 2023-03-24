@@ -53,7 +53,7 @@ steps:
     publishLocation: 'Container'
 
 - task: Docker@2
-  displayName: Build and publish image
+  displayName: Deploying
   inputs:
     containerRegistry: 'azdevopstestweatherapi_serviceConnection'
     repository: $(imageName)
